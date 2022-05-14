@@ -1,10 +1,10 @@
 { 
     "accessKeyId": "AKIA5V2AHDSSBMZE3JUY", 
-    "secretAccessKey": "4J6P1Jh1ZGteyFBjCQw916bwXQwOtCO7ohN5HeEJ", 
+    "secretAccessKey": "", 
     "region": "us-east-1",
-    "accessTokenSecret": "youraccesstokensecret",
-    "secret": "some-secret-shit-goes-here",
-    "refreshTokenSecret": "some-secret-refresh-token-shit",
+    "accessTokenSecret": "",
+    "secret": "",
+    "refreshTokenSecret": "",
     "port": 3000,
     "tokenLife": 900,
     "refreshTokenLife": 86400 
