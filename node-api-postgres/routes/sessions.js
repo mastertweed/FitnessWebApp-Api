@@ -12,12 +12,21 @@ const getSessionsAll = (request, response) => {
     })
 }
 
+const getSessionsCount = (request, response) => {
+    db.query('SELECT COUNT(*) FROM sessions', (err, results) => {
+        if (err) {
+            return response.status(404).send(err)
+        }
+        response.status(200).json(results.rows)
+    })
+}
+
 // Create user, userinfo and preference all at once (maybe stored procedure)
 const createSession = (request, response) => {
-    const { session, timecreated } = request.body
+    const session = request.params.sessionid
 
-    db.query('INSERT INTO sessions(session, timecreated) VALUES ($1, timecreated)', 
-        [session, timecreated, heartrate], 
+    db.query('INSERT INTO sessions(session, timecreated) VALUES ($1, CURRENT_TIMESTAMP)', 
+        [session], 
         (err, results) => {
             if (err) {
                 return response.status(404).send(err)
@@ -31,5 +40,6 @@ const createSession = (request, response) => {
 
 module.exports = {
     getSessionsAll,
+    getSessionsCount,
     createSession
 }

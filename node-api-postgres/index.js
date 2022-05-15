@@ -61,13 +61,14 @@ app.post('/login', authenticationRoute.loginAuth)
 //
 app.get('/heartrate', heartrateRoute.getHeartrateAll)
 app.get('/heartrate/:session', heartrateRoute.getHeartrateBySession)
-app.post('/heartrate', heartrateRoute.createHeartrate)
+app.get('/heartrate/:session/:heartrate', heartrateRoute.createHeartrate)
 
 // 
 // Sessions Table
 //
 app.get('/sessions', sessionsRoute.getSessionsAll)
-app.post('/sessions', sessionsRoute.createSession)
+app.get('/sessions/count', sessionsRoute.getSessionsCount)
+app.get('/sessions/:sessionid', sessionsRoute.createSession)
 
 app.listen(port, () => {
     console.log(`App running on port ${port}.`)

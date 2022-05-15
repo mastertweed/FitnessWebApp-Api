@@ -25,10 +25,11 @@ const getHeartrateBySession = (request, response) => {
 
 // Create user, userinfo and preference all at once (maybe stored procedure)
 const createHeartrate = (request, response) => {
-    const { session, timecreated, heartrate } = request.body
+    const session = request.params.session
+    const heartrate = request.params.heartrate
 
-    db.query('INSERT INTO heartrate(session, timecreated, heartrate) VALUES ($1, timecreated, $3)', 
-        [session, timecreated, heartrate], 
+    db.query('INSERT INTO heartrate(session, timecreated, heartrate) VALUES ($1, CURRENT_TIMESTAMP, $2)', 
+        [session, heartrate], 
         (err, results) => {
             if (err) {
                 return response.status(404).send(err)
